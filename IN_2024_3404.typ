@@ -403,7 +403,7 @@
 
 = Introduction
 <introduction>
-Since 2018, the ISO/TS 12913 series of standards has provided a framework for the measurement, analysis, and reporting of soundscape perception #cite(<ISO12913Part2>) #cite(<ISO12913Part3>);. The standard outlines a structured approach to soundscape data collection, including the use of questionnaires, binaural recordings, and environmental measurements. While other software tools exist for conducting soundscape analysis \(see @sec-psychoacoustic for some examples), these are typically targeted towards audio analysis in the vein of soundscape ecology, rather than the analysis of soundscape perception data. Soundscapy aims to enable the analysis of human perceptual data from soundscapes, following the definition of 'soundscape' given in ISO 12913-1 #cite(<ISO12913Part1>);.
+Since 2018, the ISO 12913 series of standards has provided a framework for the measurement, analysis, and reporting of soundscape perception #cite(<ISO12913Part2>) #cite(<ISO12913Part3>);. The standard outlines a structured approach to soundscape data collection, including the use of questionnaires, binaural recordings, and environmental measurements. While other software tools exist for conducting soundscape analysis \(see @sec-psychoacoustic for some examples), these are typically targeted towards audio analysis in the vein of soundscape ecology, rather than the analysis of soundscape perception data. Soundscapy aims to enable the analysis of human perceptual data from soundscapes, following the definition of 'soundscape' given in ISO 12913-1 #cite(<ISO12913Part1>);.
 
 In addition to implementing analysis methods for questionnaire data, Soundscapy also provides tools for the analysis of binaural recordings in line with ISO 12913-3. This includes the calculation of acoustic indices, such as the sound pressure level \(SPL) and psychoacoustic indices, such as the loudness level \(N) and sharpness \(S). This paper will provide an overview of these features as implemented in the current version \(v0.6), how these improve over existing tools, and a discussion of the future development of Soundscapy.
 
@@ -411,13 +411,13 @@ In addition to implementing analysis methods for questionnaire data, Soundscapy 
 <background>
 In 2010, Axelsson, Nilsson, & Berglund #cite(<Axelsson2010principal>) proposed a #emph[principal components] model of soundscape perception. Due to its similarity to the the widely-studied Russell’s circumplex model of affect #cite(<Russell1980circumplex>);, Axelsson’s principal component model is often referred to as the Soundscape Circumplex Model in soundscape literature. The circumplex model and the Swedish Soundscape Quality Protocol \(SSQP) #cite(<Axelsson2012Swedish>) utilizing it quickly became the predominant method of soundscape assessment in both scientific literature and professional practice #cite(<Aletta2023Adoption>);, due to its ease of use, interpretability, and, crucially, its ability to summarise the complex interrelationships between soundscape descriptors within a straightforward and familiar two-dimensional space. Together with a similar principal component model in Cain et al. #cite(<Cain2013development>);, the framework of the circumplex model of soundscape perception was subsequently adapted into an integral part of the standardised data collection, specifically in Method A of ISO/TS 12913-2 #cite(<ISO12913Part2>);.
 
-The soundscape circumplex model is composed of eight scales, which closely resemble the eight scales of the Circumplex Model of Affect #cite(<Russell1980circumplex>);. The 7 scales are arranged in two bipolar dimensions, with pleasant-annoying along the #emph[x] axis \(valence) and eventful-uneventful along the #emph[y] axis \(arousal). These 8 scales can be projected into the two dimensional circumplex space using the following equations #cite(<Mitchell2023Testing>);:
+The soundscape circumplex model is composed of eight scales, which closely resemble the eight scales of the Circumplex Model of Affect #cite(<Russell1980circumplex>);. The 8 scales are arranged in two bipolar dimensions, with pleasant-annoying along the #emph[x] axis \(valence) and eventful-uneventful along the #emph[y] axis \(arousal). These scales can be projected into the two dimensional circumplex space using the following equations #cite(<Mitchell2023Testing>);:
 
 #math.equation(block: true, numbering: "(1)", [ $ P_(I S O) = 1 / lambda_(P l) sum_(i = 1)^8 cos theta_i dot.op sigma_i $ ])<eq-isopl>
 
 #math.equation(block: true, numbering: "(1)", [ $ E_(I S O) = 1 / lambda_(P l) sum_(i = 1)^8 sin theta_i dot.op sigma_i $ ])<eq-isoev>
 
-where #emph[i] indexes each circumplex scale, $lambda_i$ gives the angle for the circumplex scale, and $sigma_i$ is the value for that scale. The $1 \/ lambda$ provides a scaling factor to bring the range of $P_(I S O)$, $E_(I S O)$ values to $[- 1 , + 1]$:
+where #emph[i] indexes each circumplex scale, $theta_i$ gives the angle for the circumplex scale, and $sigma_i$ is the value for that scale. The $1 \/ lambda$ provides a scaling factor to bring the range of $P_(I S O)$, $E_(I S O)$ values to $[- 1 , + 1]$:
 
 #math.equation(block: true, numbering: "(1)", [ $ lambda_(P l) = rho / 2 sum_(i = 1)^8 lr(|cos theta_i|) $ ])<eq-lampl>
 
@@ -425,17 +425,17 @@ where #emph[i] indexes each circumplex scale, $lambda_i$ gives the angle for the
 
 where $rho$ is the range of the possible response values \(i.e.~4 for the Likert responses used in ISO/TS 12913-3).
 
-Currently, the soundscape community relies very heavily on the framework proposed in ISO/TS 12913-2, both for theory development and for procuring empirical evidence of the benefits of the soundscape approach in real life scenarios. In a recent literature review, Aletta & Torresin #cite(<Aletta2023Adoption>) identified 254 scientific publications which have referred to ISO 12913 since its publication in 2018, with 50 of them appropriately making use of the data collection methods. Of those, several papers included multiple studies, with 51 studies making use of the circumplex model as recommended in the ISO standard. In addition, the circumplex model has been used in many more studies without reference to the ISO standard #cite(<Engel2018Review>);.
+Currently, the soundscape community relies heavily on the framework proposed in ISO/TS 12913-2, both for theory development and for procuring empirical evidence of the benefits of the soundscape approach in real life scenarios. In a recent literature review, Aletta & Torresin #cite(<Aletta2023Adoption>) identified 254 scientific publications which have referred to ISO 12913 since its publication in 2018, with 50 of them appropriately making use of the data collection methods. Of those, several papers included multiple studies, with 51 studies making use of the circumplex model as recommended in the ISO standard. In addition, the circumplex model has been used in many more studies without reference to the ISO standard #cite(<Engel2018Review>);.
 
 However, there is currently no standardised software enabling the circumplex analysis recommended by the ISO 12913 standards. This can lead to inconsistencies, errors, and delays in the application of the recommendations. With the revision of ISO 12913 Part 3 currently underway and proposals for more advanced analysis methods being discussed, an easy-to-use and free tool is even more necessary to ensure the consistent and validated application of the standard.
 
 In addition to the recommendations for the analysis of this questionnaire data, the ISO/TS 12913 series of standards also provides a framework for the analysis of binaural recordings in ISO/TS 12913-3. This includes the calculation of acoustic indicators, such as the sound pressure level \(SPL) and psychoacoustic metrics, such as the loudness level \(N) and sharpness \(S). These indicators 'enable the characterization of the acoustic environment \[…\], the quantification of the acoustical impact on the listener, and the exploration of relationships between physical properties of the environments and human response behaviour' #cite(<ISO12913Part3>);.
 
-Several software tools exist for psychoacoustic analysis, the most notable of which is the ArtemiS suite from HEAD Acoustics #cite(<HEADGmBH2024ArtemiS>);. These commercial software packages are widely used in the industry for the analysis of sound and vibration data. However, these tools are often prohibitively expensive for many purposes and are not specifically designed for the analysis of large scale soundscape data. The recent development of MoSQITo #cite(<Coop2024MOSQITO>) has provided a free open-source python alternative for single-channel psychoacoustic analysis. Soundscapy builds upon MoSQITo, to implement the psychoacoustic analysis methods recommended in ISO/TS 12913-3 for binaural recordings.
+Several software tools exist for psychoacoustic analysis, the most notable of which is the ArtemiS suite from HEAD Acoustics #cite(<HEADGmBH2024ArtemiS>);. These commercial software packages are widely used in the industry for the analysis of sound and vibration data. However, these tools are often prohibitively expensive for many purposes and are not specifically designed for the analysis of large scale soundscape data. The recent development of the MoSQITo sound quality library #cite(<Coop2024MOSQITO>) has provided a free open-source python alternative for single-channel psychoacoustic analysis. Soundscapy builds upon MoSQITo, to implement the psychoacoustic analysis methods recommended in ISO/TS 12913-3 for binaural recordings.
 
 = History and description
 <history-and-description>
-Soundscapy was developed for working with data collected as part of the Soundscape Indices \(SSID) project #cite(<Kang2019Towards>);. A method for #emph[in situ] data collection was developed, named the SSID Protocol, which enabled simultaneous collection of binaural recordings, survey questionnaires, and environmental data #cite(<Mitchell2020Soundscape>);. The SSID Protocol was designed to be compatible with the ISO/TS 12913 standards, optimized for large scale data collection. The data collected under this protocol forms the open-access International Soundscape Database \(ISD) #cite(<Mitchell2024International>);, which is described further in @sec-databases.
+Soundscapy was initially developed for working with data collected as part of the Soundscape Indices \(SSID) project #cite(<Kang2019Towards>);. A method for #emph[in situ] data collection was developed, named the SSID Protocol, which enabled simultaneous collection of binaural recordings, survey questionnaires, and environmental data #cite(<Mitchell2020Soundscape>);. The SSID Protocol was designed to be compatible with the ISO/TS 12913 standards, optimized for large scale data collection. The data collected under this protocol forms the open-access International Soundscape Database \(ISD) #cite(<Mitchell2024International>);, which is described further in @sec-databases.
 
 Building upon this database, a new method for analysing soundscape circumplex data was developed by Mitchell, Aletta, & Kang #cite(<Mitchell2022How>);. This method uses a distribution-based approach to model the distribution of responses to soundscape questionnaires within the circumplex. In this method, each response is transformed according to @eq-isopl and @eq-isoev, and the distribution of these responses in the circumplex is visualized using a kernel density estimation. In this way, the collective perception of a group or of a location can be thought of as the bivariate distribution of responses within the circumplex. Soundscapy was initially developed as the research code to explore and develop this method in #cite(<Mitchell2022How>) before being published as an open-source package in 2022.
 
@@ -445,7 +445,7 @@ Soundscapy is an open package of Python functions. This means there is not a use
 
 == Databases
 <sec-databases>
-Soundscapy was primarily developed to work with the International Soundscape Database \(ISD)#footnote[The ISD is available from Zenodo #link("https://zenodo.org/records/10672568");.] #cite(<Mitchell2024International>);, which I will describe here and use for the examples in this paper. The ISD is a large database of soundscape recordings and survey data collected according to the SSID Protocol #cite(<Mitchell2020Soundscape>);. The database contains 2,706 recordings, paired with 3,590 survey responses.
+Soundscapy was primarily developed to work with the International Soundscape Database \(ISD)#footnote[The ISD is available from Zenodo #link("https://zenodo.org/records/10672568");.] #cite(<Mitchell2024International>);, which will be described here and used for the examples in this paper. The ISD is a large database of soundscape recordings and survey data collected according to the SSID Protocol #cite(<Mitchell2020Soundscape>);. The database contains 2,706 recordings, paired with 3,590 survey responses.
 
 The ISD contains three primary types of data - surveys, pre-calculated psychoacoustic metrics, and binaural audio recordings. The surveys include several blocks of questions, the most important of which are the Perceptual Attribute Questions \(PAQs). These form the 8 descriptors of the soundscape circumplex #cite(<Axelsson2010principal>) - pleasant, vibrant, eventful, chaotic, annoying, monotonous, uneventful, and calm. In addition, each survey includes other information about the soundscape and demographic characteristics \(age, gender, etc.). Finally, the survey section includes identifiers of when and where the survey was conducted - the `LocationID`, `SessionID`, `latitude`, `longitude`, `start_time`, etc.
 
@@ -460,6 +460,10 @@ df = sspy.isd.load()
 ]
 The final bit of information for the survey is the `GroupID`. When stopping respondents in the survey space, they were often stopped as a group, for instance a couple walking through the space would be approached together and given the same `GroupID`. While each group completes the survey, a binaural audio recording is taken, typically lasting about 30 seconds. Therefore, each `GroupID` can be connected to around 1 to 10 surveys, and to one recording.
 
+In addition to the ISD, Soundscapy includes a module for working with the Soundscape Attributes Translation Project \(SATP) dataset#footnote[The SATP dataset is available from Zenodo #link("https://zenodo.org/records/10159673");.] a project to provide validated translations of soundscape attributes in languages other than English. The SATP includes 19,089 survey responses, including 708 participants, in 19 languages. It can be loaded within soundscapy using `sspy.datasets.satp.load_zenodo()`. In addition, work is currently underway to implement a module for working with the Affective Responses to Augmented Urban Soundscapes \(ARAUS) dataset #cite(<Ooi2023ARAUS>);.
+
+== Working with soundscape questionnaire data
+<working-with-soundscape-questionnaire-data>
 All data in Soundscapy is handled using the `pandas` library #cite(<pandas>);. Soundscapy implements some built in functions for working with both the ISD specifically and with soundscape data more generally. One example of an ISD specific function is `isd.validate()` which implements a series of data quality checks on the questionnaire data #cite(<Erfanian2021Psychological>) and returns a validated dataset `df` and a set of the excluded data `excl_df`. `add_iso_coords()` implements the extended versions of the ISO 12913-3 method for calculating the coordinates within the circumplex from the perceptual attributes, given in @eq-isopl and @eq-isoev, and adding them to the dataframe under the keys `ISOPleasant` and `ISOEventful`.
 
 #block[
@@ -469,13 +473,11 @@ df = sspy.surveys.add_iso_coords(df)
 ```
 
 ]
-Soundscapy expects the PAQ values to be Likert scale values ranging from 1 to 5 be default, as specified in ISO/TS 12913-2 and the SSID Protocol. However, it is possible to use data which, although structured the same way, has a different range of values. For instance, this could be a 7-point Likert scale, or a 0 to 100 scale. By passing these numbers to the `add_iso_coords()` function as `val_range=(0, 100)`, Soundscape will automatically scale the ISOCoordinates from -1 to +1 according to @eq-lampl and @eq-lamev.
-
-In addition to the ISD, Soundscapy includes a module for working with the Soundscape Attributes Translation Project \(SATP) dataset#footnote[The SATP dataset is available from Zenodo #link("https://zenodo.org/records/10159673");.] a project to provide validated translations of soundscape attributes in languages other than English. The SATP includes 19,089 survey responses, including 708 participants, in 19 languages. It can be loaded within soundscapy using `sspy.datasets.satp.load_zenodo()`. In addition, work is currently underway to implement a module for working with the Affective Responses to Augmented Urban Soundscapes \(ARAUS) dataset #cite(<Ooi2023ARAUS>);.
+Soundscapy expects the PAQ values to be Likert scale values ranging from 1 to 5 by default, as specified in ISO/TS 12913-2 and the SSID Protocol. However, it is possible to use data which, although structured the same way, has a different range of values. For instance, this could be a 7-point Likert scale, or a 0 to 100 scale. By passing these numbers to the `add_iso_coords()` function as `val_range=(0, 100)`, Soundscape will automatically scale the ISOCoordinates from -1 to +1 according to @eq-lampl and @eq-lamev.
 
 == Visualizing soundscape data
 <visualizing-soundscape-data>
-Once the data is loaded,
+Once the data is loaded, it can be filtered as needed and visualise the distribution of responses within the soundscape circumplex. The plotting functions make use of the `seaborn kdeplot()` #cite(<Waskom2021seaborn>);, adding additional customizations and features.
 
 #block[
 ```python
@@ -495,7 +497,7 @@ sspy.plotting.density(
 #grid(
 columns: (48.5%, 51.5%), gutter: 1em, rows: 1,
   rect(stroke: none, width: 100%)[
-#figure([#box(width: 100%,image("main_files/figure-typst/cell-6-output-1.png"))],
+#figure([#box(width: 100%,image("main_files/figure-typst/cell-5-output-1.png"))],
   caption: [
     A jointplot including the joint and marginal distributions.
   ]
@@ -503,7 +505,7 @@ columns: (48.5%, 51.5%), gutter: 1em, rows: 1,
 
 ],
   rect(stroke: none, width: 100%)[
-#figure([#box(width: 100%,image("main_files/figure-typst/cell-6-output-2.png"))],
+#figure([#box(width: 100%,image("main_files/figure-typst/cell-5-output-2.png"))],
   caption: [
     A simple density plot of two soundscapes.
   ]
@@ -511,7 +513,7 @@ columns: (48.5%, 51.5%), gutter: 1em, rows: 1,
 
 ],
 )
-== Psychoacoustic Analysis
+== Psychoacoustic, Acoustic, and Bioacoustic Analysis
 <sec-psychoacoustic>
 To implement the binaural recording processing, we rely on three packages:
 
@@ -523,7 +525,7 @@ To implement the binaural recording processing, we rely on three packages:
 ```python
 from soundscapy import Binaural
 b = Binaural.from_wav(wav_dir.joinpath("CT101.wav"))
-b.plot();
+b.plot()
 ```
 
 #block[
@@ -610,9 +612,7 @@ numbering: "1",
 <consistent-analysis-settings>
 A primary goal when developing this library was to make it easy to save and document the settings used for all analyses. This is done through a `settings.yaml` file and the `AnalysisSettings` class. Although the settings for each metric can be set at runtime, the `settings.yaml` file allows you to set all of the settings at once and document exactly what settings were passed to each analysis function and to share these settings with collaborators or reviewers.
 
-These settings can then be passed to any of the analysis functions, rather than separately defining your settings as we did above. This is particularly useful when performing batch processing on an entire folder of wav recordings.
-
-Soundscapy provides a set of default settings which can be easily loaded in:
+These settings can then be passed to any of the analysis functions, rather than separately defining your settings as we did above. This is particularly useful when performing batch processing on an entire folder of wav recordings. Soundscapy provides a set of default settings which can be easily loaded in:
 
 #block[
 ```python
@@ -620,7 +620,7 @@ analysis_settings = sspy.AnalysisSettings.default()
 ```
 
 ]
-and the settings file for the Loudness calculation can be printed:
+and the settings file for e.g.~the Loudness calculation can be printed:
 
 #block[
 ```python
@@ -686,7 +686,7 @@ position: bottom,
 [
 Future development plans for Soundscapy
 ]), 
-kind: "quarto-float-fig", 
+// kind: "quarto-float-fig", 
 supplement: "Figure", 
 numbering: "1", 
 )
@@ -725,4 +725,4 @@ Code Availability
 ]
 )
 ]
-The Soundscapy package is available on PyPI and can be installed using `pip install soundscapy`. The source code is available on GitHub at #link("https://github.com/MitchellAcoustics/Soundscapy");, where contributions are welcomed! The full notebook for this paper is available on OSF
+The Soundscapy package is available on PyPI and can be installed using `pip install soundscapy`. The source code is available on GitHub at #link("https://github.com/MitchellAcoustics/Soundscapy");, where contributions are welcomed!
