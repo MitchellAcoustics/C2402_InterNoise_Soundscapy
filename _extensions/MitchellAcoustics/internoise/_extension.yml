@@ -1,0 +1,21 @@
+title: INTER-NOISE Template
+author: Andrew Mitchell
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    pdf:
+      toc: true
+      template: latex/template.tex
+      # include-in-header: header.tex
+      csl: ieee-mod.csl
+    typst:
+      template-partials:
+        - typst/typst-template.typ
+        - typst/typst-show.typ
+      include-before-body: 
+        text: |
+          #show heading: set text(size: 12pt, weight: "bold")
+filters:
+  - parse-latex
+
