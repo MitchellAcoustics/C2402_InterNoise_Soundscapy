@@ -26,7 +26,7 @@
               affiliation: "$it.department$",
               postal: "$it.name$, $it.address$",
             $endfor$
-            email: "$it.email$" 
+            email: [$it.email$] 
           ),
       $endfor$
     ),
