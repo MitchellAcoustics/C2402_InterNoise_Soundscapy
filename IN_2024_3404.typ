@@ -98,33 +98,33 @@
     old_callout.body.children.at(1))
 }
 
-#show ref: it => locate(loc => {
-  let target = query(it.target, loc).first()
-  if it.at("supplement", default: none) == none {
-    it
-    return
-  }
+// #show ref: it => locate(loc => {
+//   let target = query(it.target, loc).first()
+//   if it.at("supplement", default: none) == none {
+//     it
+//     return
+//   }
 
-  let sup = it.supplement.text.matches(regex("^45127368-afa1-446a-820f-fc64c546b2c5%(.*)")).at(0, default: none)
-  if sup != none {
-    let parent_id = sup.captures.first()
-    let parent_figure = query(label(parent_id), loc).first()
-    let parent_location = parent_figure.location()
+//   let sup = it.supplement.text.matches(regex("^45127368-afa1-446a-820f-fc64c546b2c5%(.*)")).at(0, default: none)
+//   if sup != none {
+//     let parent_id = sup.captures.first()
+//     let parent_figure = query(label(parent_id), loc).first()
+//     let parent_location = parent_figure.location()
 
-    let counters = numbering(
-      parent_figure.at("numbering"), 
-      ..parent_figure.at("counter").at(parent_location))
+//     let counters = numbering(
+//       parent_figure.at("numbering"), 
+//       ..parent_figure.at("counter").at(parent_location))
       
-    let subcounter = numbering(
-      target.at("numbering"),
-      ..target.at("counter").at(target.location()))
+//     let subcounter = numbering(
+//       target.at("numbering"),
+//       ..target.at("counter").at(target.location()))
     
-    // NOTE there's a nonbreaking space in the block below
-    link(target.location(), [#parent_figure.at("supplement") #counters#subcounter])
-  } else {
-    it
-  }
-})
+//     // NOTE there's a nonbreaking space in the block below
+//     link(target.location(), [#parent_figure.at("supplement") #counters#subcounter])
+//   } else {
+//     it
+//   }
+// })
 
 // 2023-10-09: #fa-icon("fa-info") is not working, so we'll eval "#fa-info()" instead
 #let callout(body: [], title: "Callout", background_color: rgb("#dddddd"), icon: none, icon_color: black) = {
@@ -534,7 +534,7 @@ position: bottom,
 [
 Loading and viewing a binaural recording in Soundscapy.
 ]), 
-kind: "quarto-float-fig", 
+// kind: "quarto-float-fig", 
 supplement: "Figure", 
 numbering: "1", 
 )
@@ -550,6 +550,8 @@ The metrics currently available are:
 - MoSQITo: Zwicker time-varying Loudness \($N$) #cite(<ISO2017Acoustics>) and Roughness \($R$) #cite(<Daniel1997Psychoacoustical>) are implemented directly. In addition, Sharpness \($S$) can be calculated directly or from the the loudness parameters.
 
 Soundscapy combines all of these metrics and makes it easy and \(relatively) fast to compute any or all of them for a binaural audio recording. These results have been preliminarily validated through comparison of results obtained from Head Acoustics ArtemiS suite on a set of real-world recordings.
+
+#show table.cell.where(x: 0): set text(style: "italic"); #show table.cell.where(y: 0): set text(style: "normal", weight: "bold"); #set table(stroke: (_, y) => if y > 0 { (top: 0.8pt) });
 
 #block[
 ```python
