@@ -3,31 +3,21 @@ name = "c2402-internoise-soundscapy"
 version = "0.1.0"
 description = "Add your description here"
 authors = [
-    { name = "Andrew Mitchell", email = "mitchellacoustics15@gmail.com" }
+    { name = "Andrew Mitchell", email = "a.j.mitchell@ucl.ac.uk" }
 ]
 dependencies = [
-    "soundscapy @ git+https://github.com/MitchellAcoustics/Soundscapy.git",
     "jupyter>=1.0.0",
     "jupyter-cache>=1.0.0",
-    "markdown>=3.6",
+    "markdown>=3.7",
     "circumplex>=0.1.4",
+    "soundscapy>=0.7.0",
+    "shutup>=0.2.0",
 ]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">= 3.10"
 license = { text = "BSD-3-Clause" }
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
+virtual = true
 dev-dependencies = []
-
-[tool.hatch.metadata]
-allow-direct-references = true
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/c2402_internoise_soundscapy"]
-
-[tool.pdm]
