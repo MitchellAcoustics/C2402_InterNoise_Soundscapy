@@ -1,6 +1,10 @@
 ---
 title: Soundscapy
 subtitle: A Python Package for Soundscape Assessment and Analysis
+title-slide-attributes: 
+  data-background-image: images/LightLogo.png
+  data-background-position: right 20% bottom 50%
+  data-background-size: 25%
 author:
   - name: Andrew Mitchell
     orcid: 0000-0003-0978-5046
@@ -10,6 +14,20 @@ institute: University College London
 format:
   clean-revealjs: 
     code-overflow: wrap
+    width: 1512
+    height: 982
+    highlight-style: pygments
+    logo: images/internoise2024.png
+  beamer: 
+    aspectratio: 1610
+    navigation: horizontal
+    theme: metropolis
+    fontsize: "8pt"
+    include-in-header:
+      - text: |
+          \AddToHook{env/Highlighting/begin}{\tiny}    
+    # monofontoptions: 
+    #   - Scale=0.55
 html-math-method:
   method: mathjax
   url: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
@@ -33,49 +51,63 @@ import warnings
 warnings.simplefilter("ignore")
 ```
 
-## Introduction {.smaller}
+## Introduction
 
 :::::: columns
-:::: {.column width="50%"}
--   Soundscape: holistic approach to acoustic environments
--   ISO 12913 series (since 2018) provides standardized framework
--   Challenges in consistent application of standards
+:::: {.column .incremental width="60%"}
+- Soundscape: A holistic approach to understanding and assessing acoustic environments
+- ISO 12913 series provides a standardized framework for soundscape data collection and analysis (introduced in 2018)
+- Despite standardization, challenges persist in consistent application and interpretation
 
-::: fragment
-Soundscapy addresses these challenges:
+::: {.fragment .incremental}
+**Soundscapy** addresses these challenges through:
 
--   Open-source Python package
--   Aligns with ISO 12913-3 guidelines
--   Facilitates consistent, reproducible analysis
+- An open-source Python package accessible to researchers and practitioners
+- Alignment with ISO 12913-3 guidelines for consistency (including upcoming revisions)
+- Facilitating reproducible and standardized analysis workflows
+- Bridging the gap between theoretical soundscape concepts and practical applications
+- Enabling large-scale soundscape studies with efficient data processing
 :::
 ::::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 ![ISO 12913-3 recommendations for soundscape analysis](images/ISO12913-3-screenshot.png)
 :::
 ::::::
 
 ::: notes
-Introduce the concept of soundscape and its holistic approach. Mention the ISO 12913 series and its role in standardizing soundscape assessment. Highlight the challenges in applying these standards consistently. Introduce Soundscapy as a solution to these challenges.
+- Introduce the concept of soundscape as a holistic approach to acoustic environments
+- Highlight the importance of the ISO 12913 series in standardizing soundscape assessment
+- Emphasize the ongoing challenges in applying these standards consistently across studies
+- Present Soundscapy as a comprehensive solution to these challenges
+- Mention its strict alignment with ISO guidelines and focus on reproducibility and standardization
+- Highlight how Soundscapy bridges the gap between theory and practice in soundscape research
 :::
 
-## Soundscapy: Origins and Purpose {.smaller}
+
+## Soundscapy: Origins and Purpose
 
 ::::::: columns
-::::: {.column width="60%"}
--   Developed during the Soundscape Indices (SSID) project
--   Built on the SSID Protocol for data collection
--   Utilizes the International Soundscape Database (ISD)
+::::: {.column width="65%"}
+- Developed as part of the Soundscape Indices (SSID) project, an ERC Horizon 2020 Grant
+- Built upon the SSID Protocol, a standardized method for *in situ* soundscape data collection
+- Builds upon the extensive International Soundscape Database (ISD) and other ISO 12913-2 datasets
 
 ::: fragment
--   Key features:
-    -   Visualization using distributional methods
-    -   Psychoacoustic and acoustic analysis of binaural data
-    -   Optimized for large-scale data processing
+Key features and innovations:
+
+- Advanced visualization using distributional methods for nuanced soundscape representation
+- Comprehensive psychoacoustic and acoustic analysis capabilities for binaural recordings
+- Optimized for efficient processing of large-scale soundscape datasets
+- Ensures consistency with ISO 12913-3 guidelines throughout the analysis pipeline
 :::
 
-::: fragment
-### Simple to install
+:::::
+
+::: {.column width="35%"}
+![](images/LightLogo.png){.r-stretch}
+
+### Simple installation and intuitive usage
 
 ``` bash
 pip install soundscapy
@@ -85,30 +117,33 @@ pip install soundscapy
 import soundscapy as sspy
 ```
 :::
-:::::
-
-::: {.column width="40%"}
-![Soundscapy Logo](images/LightLogo.png){.r-stretch}
-:::
 :::::::
 
 ::: notes
-Explain the origins of Soundscapy in the SSID project. Highlight its connection to the SSID Protocol and the ISD. Briefly introduce the key features, emphasizing its capabilities in visualization and data processing.
+- Explain Soundscapy's origins within the context of the SSID project, a significant research initiative
+- Highlight its foundation on the SSID Protocol, emphasizing standardized data collection methods
+- Discuss the integration with the International Soundscape Database (ISD) and its importance
+- Emphasize key features: advanced visualization, comprehensive analysis capabilities, and scalability
+- Demonstrate the simplicity of installation and basic usage with code examples
+- Reinforce Soundscapy's adherence to ISO standards, ensuring consistency in soundscape research
+- Highlight how Soundscapy makes advanced soundscape analysis techniques accessible to a wider audience
 :::
 
-## Soundscape Circumplex Model {.smaller}
+
+## Soundscape Circumplex Model
 
 ::::: columns
-::: {.column width="40%"}
+::: {.column width="60%"}
 -   Proposed by @Axelsson2010principal
--   Two orthogonal dimensions:
+-   Comprises two orthogonal dimensions that capture key aspects of soundscape perception:
     -   Pleasant-Annoying (x-axis)
     -   Eventful-Uneventful (y-axis)
 -   Eight perceptual scales
--   Adopted in ISO/TS 12913-2
+-   Officially adopted in ISO/TS 12913-2, quickly becoming the dominant soundscape perception assessment method^[@Aletta2023Adoption]
+-   Serves as the cornerstone for Soundscapy's analytical approach and visualisations
 :::
 
-::: {.column width="60%"}
+::: {.column width="40%"}
 ```{python}
 #| echo: false
 sample_transform = {
@@ -127,6 +162,7 @@ sample_transform = sample_transform.set_index("RecordID")
 ```
 
 ```{python}
+#| label: likert-radar
 from soundscapy.plotting import likert
 likert.paq_radar_plot(sample_transform)
 ```
@@ -134,17 +170,23 @@ likert.paq_radar_plot(sample_transform)
 :::::
 
 ::: notes
-Explain the Soundscape Circumplex Model in more detail. Highlight its importance in standardizing soundscape assessment. Mention its adoption in ISO/TS 12913-2 and its widespread use in research.
+- Provide a detailed explanation of the Soundscape Circumplex Model and its significance
+- Highlight its importance in standardizing soundscape assessment methodologies
+- Discuss its adoption in ISO/TS 12913-2 and its widespread use in soundscape research globally
+- Explain how Soundscapy implements and extends this model in its analysis framework
+- Demonstrate the radar plot visualization, explaining how it represents the eight perceptual scales
+- Discuss how this model enables nuanced comparisons between different soundscapes
+- Highlight how Soundscapy makes working with this model more accessible and consistent
 :::
 
-## ISO Coordinates Calculation {.smaller}
+## ISO Coordinates Calculation
 
-::::: columns
-::: {.column width="40%"}
--   Implements equations from ISO 12913-3
+::: columns
+:::: {.column width="48%"}
 -   Transforms 8 PAQ responses into 2D coordinates
--   Flexible input ranges (e.g., 1-5, 0-100)
--   Supports different angle configurations
+-   Implements improved equations from ISO 12913-3 upcoming revisions
+-   Offers flexible input ranges (e.g., 1-5, 0-100) to accommodate various survey designs
+-   Supports different angle configurations for various survey translations^[@Aletta2024Soundscape]
 
 $$
 P_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \cos{\theta_i} \cdot \sigma_i
@@ -153,9 +195,12 @@ $$ {#eq-isopl}
 $$
 E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 $$ {#eq-isoev}
-:::
 
-::: {.column width="60%"}
+::::
+
+:::: {.column width="48%"}
+::::: {.r-stack}
+:::::: {.fragment .fade-out}
 ```{python}
 # Load data from the ISD
 data = sspy.isd.load()
@@ -172,27 +217,65 @@ data = sspy.surveys.add_iso_coords(data)
 view_data = sspy.surveys.return_paqs(data, incl_ids = False, other_cols = ['ISOPleasant', 'ISOEventful'])
 view_data.head(5)
 ```
-:::
+::::::
+
+:::::: {.fragment}
+```{python}
+#| echo: false
+likert.paq_radar_plot(sample_transform)
+```
+::::::
+
+:::::: {.fragment}
+
+```{python}
+#| code-fold: true
+#| width: 125%
+import seaborn as sns
+sample_transform = sspy.surveys.rename_paqs(sample_transform)
+sample_transform = sspy.surveys.add_iso_coords(sample_transform, overwrite=True)
+colors = ["b", "r"]
+palette = sns.color_palette(colors)
+sspy.plotting.scatter_plot(sample_transform, hue="RecordID", palette=palette, diagonal_lines=True, legend="brief", s=100, figsize=(8,8))
+
+```
+
+::::::
 :::::
 
-::: notes
-Explain the purpose and functionality of the `calculate_iso_coords` function. Highlight its alignment with ISO 12913-3 equations. Emphasize its flexibility in handling different input ranges and angle configurations. Mention how this function is central to Soundscapy's analysis capabilities.
+::::
 :::
 
-## Distribution-based Analysis {.smaller}
+::: notes
+ - Explain the purpose and functionality of ISO coordinate calculation in detail
+ - Highlight the strict alignment with ISO 12913-3 equations, ensuring standardized analysis
+ - Emphasize the flexibility in handling different input ranges and angle configurations
+ - Demonstrate the process with a step-by-step code example
+ - Discuss the importance of this function in Soundscapy's analysis pipeline
+ - Explain how this standardized approach enables consistent comparisons across studies
+
+:::
+
+## Distribution-based Analysis
 
 ::::::::: columns
 ::: {.column width="50%"}
 -   Developed by @Mitchell2022How
 -   Represents the collective perception of a soundscape as a distribution, using kernel density estimation
--   Provides far richer insight than point estimates
+
+ - Key Benefits:
+   - Visualizes central tendency, dispersion, and skewness of perceptions
+   - Illustrates the shape and extent of soundscape perception in circumplex space
+   - Allows for statistical comparisons between different soundscapes or groups
+ - Additional features:
+   - Calculation of percentiles and other statistical measures
+   - Multiple visualization options (both Seaborn and Plotly backends available)
 :::
 
 ::::::: {.column width="50%"}
 :::::: r-stack
-::: fragment
+::: {.fragment .fade-out}
 ```{python}
-#| code-line-numbers: '|1|2|3,4,5'
 sspy.plotting.density_plot(
   sspy.isd.select_location_ids(data, "CamdenTown"),
   title="Camden Town Soundscape Distribution",
@@ -202,7 +285,7 @@ sspy.plotting.density_plot(
 ```
 :::
 
-::: fragment
+::: {.fragment .fade-in-then-out}
 ```{python}
 #| code-line-numbers: '2,7'
 sspy.plotting.density_plot(
@@ -237,33 +320,36 @@ sspy.plotting.scatter_plot(
 This distribution-based visualisation and analysis clearly shows three important characteristics of the soundscape perception of a group or location: 1. The distribution across both pleasantness and eventfulness, including the central tendency, the dispersion, and any skewness in the response. 2. The general shape of the soundscape within the circumplex space - in this case, Pancras Lock is mostly in the pleasant half, with a slight skew towards eventfulness. Proceedings of INTER-NOISE 2024 3. The degree of agreement about the soundscape perception among the sample. In addition to these visualisations, Soundscapy provides functions for calculating some basic statistics about the distribution of responses, such as the mean, median, and standard deviation, as well as metrics inspired by reporting from noise annoyance studies, such as the percentage of respondents who rated the soundscape as ‘pleasant’ or ‘eventful’.
 :::
 
-## Databases Integration {.smaller}
+## Databases Integration
 
 ::::: columns
 ::: {.column width="50%"}
--   International Soundscape Database (ISD)
-    -   2,706 recordings
-    -   3,590 survey responses
-    -   6 cities across Europe and China
--   Soundscape Attributes Translation Project (SATP)
+-   International Soundscape Database (ISD)^[@Mitchell2021International]
+    -   2,706 high-quality, real-world binaural recordings
+    -   3,589 *in situ* survey responses
+    -   Data from 6 cities across Europe and China
+-   Soundscape Attributes Translation Project (SATP)^[@Oberman2024Soundscape]
     -   19,089 responses
     -   708 participants
     -   19 languages
--   ARAUS
+-   ARAUS (Affective Responsees to Augmented Urban Soundscapes)^[@Ooi2023ARAUS]
     -   Currently under development
+    -   Large-scale lab-based dataset of augmented soundscapes
 :::
 
 ::: {.column width="50%"}
+
 ```{python}
+#| label: database-load
 # Load ISD data
 isd_data = sspy.isd.load()
 
 # Load SATP data
 import soundscapy.databases.satp as satp
-# satp_data = satp.load_zenodo()
+satp_data = satp.load_zenodo()
 
 print(f"ISD shape: {isd_data.shape}")
-# print(f"SATP shape: {satp_data.shape}")
+print(f"SATP shape: {satp_data.shape}")
 
 sspy.isd.soundscapy_describe(isd_data).head(5)
 ```
@@ -271,27 +357,54 @@ sspy.isd.soundscapy_describe(isd_data).head(5)
 :::::
 
 ::: notes
-Explain the significance of the integrated databases. Highlight the ease of loading and working with these datasets in Soundscapy. Mention the potential for cross-cultural and multi-lingual soundscape studies.
+Key benefits:
+
+- Instant access to large, diverse, and high-quality datasets
+- Facilitates robust cross-cultural and multi-lingual studies
+- Enables large-scale analysis and meta-studies
+- Promotes standardization and comparability in soundscape research
+
+- Explain the significance of integrated databases in Soundscapy and their impact on research capabilities
+- Highlight the ease of loading and working with these extensive datasets
+- Discuss the potential for cross-cultural and multi-lingual soundscape studies using these resources
+- Demonstrate basic data loading, exploration, and description with code examples
+- Mention the upcoming integration of ARAUS and its implications for augmented reality soundscape research
+- Emphasize how these databases enable more comprehensive and generalizable soundscape studies
 :::
 
 ## Psychoacoustic Analysis {.smaller}
 
 ::::: columns
 ::: {.column width="50%"}
--   Integration with multiple libraries:
-    -   Python Acoustics
-    -   scikit-maad
-    -   MoSQITo
--   Wide range of metrics:
-    -   SPL ($L_{Zeq}$, $L_{Aeq}$, $L_{Ceq}$)
-    -   Loudness (N)
-    -   Sharpness (S)
-    -   Roughness (R)
-    -   Many more...
+**Integration with multiple libraries:**
+
+-   Python Acoustics: For standard acoustic metrics
+-   scikit-maad: Advanced ecological soundscape analysis
+-   MoSQITo: Psychoacoustics metrics
+
+**Wide range of metrics:**
+
+-   SPL ($L_{Zeq}$, $L_{Aeq}$, $L_{Ceq}$)
+-   Loudness (N)
+-   Sharpness (S)
+-   Roughness (R)
+-   Bioacoustic Indices
+-   Many more...
+
+**Key advantages:**
+
+-   Completely free, open license, and open source
+-   Adherence to ISO and other relevant standards
+-   Optimized for binaural recordings
+-   Consistent calculation methods across studies
+-   Extensible framework for adding new metrics
 :::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
+
+::: {.fragment style="font-size: 120%" .semi-fade-out}
 ```{python}
+#| label: binaural-analysis
 from soundscapy.audio.analysis_settings import MetricSettings
 from soundscapy.audio import Binaural
 
@@ -306,13 +419,25 @@ laeq_settings = MetricSettings(
 b.pyacoustics_metric('LAeq', metric_settings=laeq_settings).round(2)
 ```
 :::
+
+::: {.fragment style="font-size: 120%"}
+\
+
+```{python}
+b.mosqito_metric('sharpness_din_perseg').round(2)
+```
+
+:::
+
+::::
+
 :::::
 
 ::: notes
 Highlight the comprehensive psychoacoustic analysis capabilities. Mention the integration with established libraries. Emphasize the simplicity of performing complex analyses. Discuss the importance of these metrics in soundscape assessment.
 :::
 
-## Batch Processing and Performance {.smaller}
+## Batch Processing and Performance {.scrollable}
 
 ::::: columns
 ::: {.column width="50%"}
@@ -320,13 +445,10 @@ Highlight the comprehensive psychoacoustic analysis capabilities. Mention the in
 
 - **Parallel Processing**: Leverages multi-core CPUs for efficient computation.
 
-- **Large Dataset Optimization**: Handles substantial volumes of data effectively.
-
-- **Performance Gains**: Significant improvements in processing speed.
-
-- **Scalability**: Enables extensive soundscape studies previously impractical.
+- **Reproducbible Analysis**: Shareable plain-text analysis configuration and documentation.
 
 **Performance Example**:
+
 - 20 recordings (10 min 41 sec total)
 - Serial processing: 29.4 minutes
 - Parallel processing: 7.7 minutes
@@ -335,7 +457,14 @@ Highlight the comprehensive psychoacoustic analysis capabilities. Mention the in
 
 ::: {.column width="50%"}
 ```{python}
-#| eval: false
+#| echo: false
+__spec__ = None # Who fucking knows why: https://stackoverflow.com/questions/45720153/python-multiprocessing-error-attributeerror-module-main-has-no-attribute
+```
+
+```{python}
+#| eval: true
+#| label: audio-analysis
+#| code-line-numbers: "|1|5,6|8-12|14,15"
 from soundscapy.audio import AudioAnalysis
 
 wav_folder = Path("data")
@@ -364,7 +493,7 @@ Explain batch processing benefits:
 5. Emphasize how these features enable new types of large-scale research.
 :::
 
-## Customization and Flexibility {.smaller}
+## Customization and Flexibility
 
 ::::: columns
 ::: {.column width="50%"}
@@ -372,11 +501,9 @@ Explain batch processing benefits:
 
 - **Version Control Friendly**: Easily track, share, and collaborate on configurations.
 
-- **Data Format Versatility**: Supports various input/output formats for compatibility.
-
 - **Data Science Integration**:
   - Works with pandas for data manipulation
-  - Compatible with matplotlib and seaborn for visualizations
+  - Compatible with matplotlib/seaborn and plotlly for visualizations
   - Leverages popular Python libraries
 
 - **Extensible Architecture**: 
@@ -386,9 +513,11 @@ Explain batch processing benefits:
 :::
 
 ::: {.column width="50%"}
+
+:::: {.r-stack}
+
+::::: {.fragment .fade-out}
 ```{python}
-from soundscapy.audio import AudioAnalysis
-analysis = AudioAnalysis()
 # Customize analysis settings
 new_config = {
   "MoSQITo": {
@@ -403,14 +532,16 @@ analysis.update_config(new_config)
 analysis.save_config("updated_config.yaml")
 ```
 
-```{python}
-#| echo: false
-import yaml
-with open("updated_config.yaml") as f:
-  updated_config = yaml.safe_load(f)
+:::::
 
-print(yaml.dump(updated_config['MoSQITo']))
-```
+::::: {.fragment}
+
+![](images/Soundscapy-config.png)
+
+:::::
+
+:::: 
+
 :::
 :::::
 
@@ -424,7 +555,7 @@ Explain flexibility and customization features:
 6. How these features make Soundscapy versatile for various soundscape studies.
 :::
 
-## Package Documentation {.smaller}
+## Package Documentation 
 
 ::::: columns
 ::: {.column width="40%"}
@@ -467,27 +598,27 @@ Mention the open-source aspect and community involvement possibilities.
 Emphasize the commitment to keeping the package and its documentation up-to-date.
 :::
 
-## Future Work: Predictive Models {.smaller}
+## Future Work: Predictive Models^[@Hou2024Soundscape]
 
-::::: columns
-::: {.column width="50%"}
+![Modular Framework](images/Soundscapy2.png){height="550"}
+
+:::{.fragment}
+::::: {.columns .auto-stretch}
+::: {.column width="48%"}
 - **Pretrained Models Integration**:
   - Predict soundscape perception from acoustic features
   - Multiple model support for comparison
 
-- **Automated Assessment**:
-  - Rapid evaluation of new soundscapes
-  - Potential for real-time analysis
+:::
+
+::: {.column width="48%"}
 
 - **Design Optimization**:
   - Predict impact of soundscape interventions
   - Assist in urban planning decisions
 :::
-
-::: {.column width="50%"}
-![Predictive Model Interface Prototype](images/predictive_model_screenshot.png)
-:::
 :::::
+:::
 
 ::: notes
 Explain the potential of integrating pretrained models for soundscape prediction.
@@ -495,10 +626,12 @@ Discuss the implications for automated assessment and design optimization.
 Highlight how this could change the landscape of soundscape research and urban planning.
 :::
 
-## Future Work: Soundscape Perception Indices (SPI) {.smaller}
+## Future Work: Soundscape Perception Indices (SPI)^[@Mitchell2024Soundscape]
 
-::::: columns
-::: {.column width="50%"}
+:::: columns
+
+::: {.column width=48%}
+
 - **Single Index Calculation**:
   - Simplify complex soundscape data
   - Enable quick comparisons between locations
@@ -506,16 +639,22 @@ Highlight how this could change the landscape of soundscape research and urban p
 - **Standardized Reporting**:
   - Facilitate communication with stakeholders
   - Support policy-making processes
+:::
+
+::: {.column width=48%}
 
 - **Customizable Weighting**:
   - Adapt to different cultural contexts
   - Account for varying research priorities
-:::
 
-::: {.column width="50%"}
-![SPI Calculation Interface Prototype](images/SPI-framework.drawio.png)
+- **Applications**:
+  - Urban planning and design optimization
+  - Environmental quality assessment
+  - Cross-cultural soundscape studies
 :::
-:::::
+::::
+
+![SPI Calculation Framework](images/SPI-framework.drawio.png)
 
 ::: notes
 Introduce the concept of Soundscape Perception Indices (SPI).
@@ -523,7 +662,10 @@ Explain how it simplifies complex data for easier interpretation and comparison.
 Discuss the potential applications in urban planning, policy-making, and cross-cultural studies.
 :::
 
-## Conclusion {.smaller}
+## Conclusion
+
+::::: {.columns}
+:::: {.column width="65%"}
 
 - **Standardized Analysis**: Consistent with ISO 12913-3 guidelines
 
@@ -543,6 +685,16 @@ Discuss the potential applications in urban planning, policy-making, and cross-c
   - Docs: [soundscapy.readthedocs.io](https://soundscapy.readthedocs.io)
   - PyPI: `pip install soundscapy`
 
+::::
+
+:::: {.column width="35%" .center}
+
+[![](images/qr.png)](https://soundscapy.readthedocs.io/en/latest/){.center}
+
+::::
+
+:::::
+
 ::: notes
 Summarize the key benefits and features of Soundscapy.
 Emphasize its alignment with ISO standards and its user-friendly nature.
@@ -552,3 +704,22 @@ Provide clear information on how to access and start using Soundscapy.
 :::
 
 ## References
+
+::: {.columns}
+
+:::: {.column width=65%} 
+::: {#refs}
+:::
+::::
+
+:::: {.column width=35%}
+
+Also check out my other package for even more advanced circumplex analysis, currently under development!
+
+[![](images/qr-2.png)](ttps://circumplex.readthedocs.io/en/latest/)
+
+This presentation is available online at [https://mitchellacoustics.quarto.pub/internoise-2024-soundscapy-pres](https://mitchellacoustics.quarto.pub/internoise-2024-soundscapy-pres/#/title-slide)
+
+::::
+
+:::

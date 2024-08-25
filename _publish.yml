@@ -1,0 +1,4 @@
+- source: presentation.qmd
+  quarto-pub:
+    - id: 01f37880-6dd9-421f-aa04-c72584864db6
+      url: 'https://mitchellacoustics.quarto.pub/internoise-2024-soundscapy-pres'
