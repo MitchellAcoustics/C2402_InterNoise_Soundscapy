@@ -9,7 +9,7 @@ author:
   - name: Andrew Mitchell
     orcid: 0000-0003-0978-5046
     email: a.j.mitchell@ucl.ac.uk
-    affiliation: Bartlett School of Sustainable Construction
+    affiliation: Institute for Environmental Design & Engineering and Bartlett School of Sustainable Construction
 institute: University College London
 format:
   clean-revealjs: 
@@ -18,16 +18,15 @@ format:
     height: 982
     highlight-style: pygments
     logo: images/internoise2024.png
-  beamer: 
-    aspectratio: 1610
-    navigation: horizontal
-    theme: metropolis
-    fontsize: "8pt"
-    include-in-header:
-      - text: |
-          \AddToHook{env/Highlighting/begin}{\tiny}    
-    # monofontoptions: 
-    #   - Scale=0.55
+    scrollable: true
+  # beamer: 
+  #   aspectratio: 1610
+  #   navigation: horizontal
+  #   theme: metropolis
+  #   fontsize: "8pt"
+  #   include-in-header:
+  #     - text: |
+  #         \AddToHook{env/Highlighting/begin}{\tiny}    
 html-math-method:
   method: mathjax
   url: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
@@ -71,7 +70,10 @@ warnings.simplefilter("ignore")
 ::::
 
 ::: {.column width="40%"}
+
 ![ISO 12913-3 recommendations for soundscape analysis](images/ISO12913-3-screenshot.png)
+![](images/ISO-analysis-reporting.png)
+
 :::
 ::::::
 
@@ -450,9 +452,9 @@ Highlight the comprehensive psychoacoustic analysis capabilities. Mention the in
 **Performance Example**:
 
 - 20 recordings (10 min 41 sec total)
-- Serial processing: 29.4 minutes
-- Parallel processing: 7.7 minutes
-- Speed-up factor: 3.8x
+- Serial processing: ~60 minutes
+- Parallel processing: 8.5 minutes
+- Speed-up factor: 7x
 :::
 
 ::: {.column width="50%"}
@@ -475,7 +477,8 @@ analysis = AudioAnalysis()
 # Analyse a folder of recordings
 folder_results = analysis.analyze_folder(
     wav_folder, 
-    calibration_file="data/Levels.json"
+    calibration_file="data/Levels.json",
+    resample=48000
 )
 
 # Print results
@@ -578,13 +581,17 @@ Explain flexibility and customization features:
 
 ::::: {.column width="60%"}
 :::: {.r-stack}
+
+::: {.fragment .fade-out}
+![Soundscapy Github Page](images/soundscapy-github.png){width=850}
+:::
+
 ::: {.fragment}
 ![Soundscapy Documentation Homepage](images/soundscapy-homepage.png)
 :::
 
 :::{.fragment}
 ![ - ](images/binaural-tutorial.png)
-
 :::
 
 ::::
@@ -607,6 +614,7 @@ Emphasize the commitment to keeping the package and its documentation up-to-date
 ::: {.column width="48%"}
 - **Pretrained Models Integration**:
   - Predict soundscape perception from acoustic features
+  - Sound source recognition
   - Multiple model support for comparison
 
 :::

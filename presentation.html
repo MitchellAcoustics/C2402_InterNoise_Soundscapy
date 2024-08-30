@@ -329,6 +329,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -443,7 +444,7 @@ Andrew Mitchell <a href="https://orcid.org/0000-0003-0978-5046" class="quarto-ti
 <a href="mailto:a.j.mitchell@ucl.ac.uk">a.j.mitchell@ucl.ac.uk</a>
 </div>
         <p class="quarto-title-affiliation">
-            Bartlett School of Sustainable Construction
+            Institute for Environmental Design &amp; Engineering and Bartlett School of Sustainable Construction
           </p>
         <p class="quarto-title-affiliation">
             University College London
@@ -473,12 +474,7 @@ Andrew Mitchell <a href="https://orcid.org/0000-0003-0978-5046" class="quarto-ti
 </ul>
 </div>
 </div><div class="column" style="width:40%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ISO12913-3-screenshot.png"></p>
-<figcaption>ISO 12913-3 recommendations for soundscape analysis</figcaption>
-</figure>
-</div>
+<p><img data-src="images/ISO12913-3-screenshot.png" alt="ISO 12913-3 recommendations for soundscape analysis"> <img data-src="images/ISO-analysis-reporting.png"></p>
 </div></div>
 <aside class="notes">
 <ul>
@@ -523,7 +519,7 @@ Andrew Mitchell <a href="https://orcid.org/0000-0003-0978-5046" class="quarto-ti
 <img data-src="images/LightLogo.png" class="r-stretch">
 <h3 id="simple-installation-and-intuitive-usage">Simple installation and intuitive usage</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">pip</span> install soundscapy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="7e04a60e" class="cell" data-execution_count="3">
+<div id="e154a86f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">import</span> soundscapy <span class="im">as</span> sspy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
@@ -549,7 +545,7 @@ Andrew Mitchell <a href="https://orcid.org/0000-0003-0978-5046" class="quarto-ti
           display:block!important;
       }</style></aside>
 </section>
-<section id="soundscape-circumplex-model" class="slide level2">
+<section id="soundscape-circumplex-model" class="slide level2 scrollable">
 <h2>Soundscape Circumplex Model</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
@@ -571,7 +567,7 @@ Andrew Mitchell <a href="https://orcid.org/0000-0003-0978-5046" class="quarto-ti
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/likert-radar-output-1.png" id="likert-radar" width="519" height="430"></p>
+<p><img data-src="presentation_files/figure-revealjs/likert-radar-output-1.png" id="likert-radar" width="528" height="439"></p>
 </figure>
 </div>
 </div>
@@ -599,7 +595,7 @@ Andrew Mitchell <a href="https://orcid.org/0000-0003-0978-5046" class="quarto-ti
           display:block!important;
       }</style></aside>
 <aside><ol class="aside-footnotes"><li id="fn1"><p><span class="citation" data-cites="Aletta2023Adoption">Aletta and Torresin (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p></li></ol></aside></section>
-<section id="iso-coordinates-calculation" class="slide level2">
+<section id="iso-coordinates-calculation" class="slide level2 scrollable">
 <h2>ISO Coordinates Calculation</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
@@ -618,7 +614,7 @@ E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 </div><div class="column" style="width:48%;">
 <div class="r-stack">
 <div class="fragment fade-out">
-<div id="baf57334" class="cell" data-execution_count="6">
+<div id="8ec7d52c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="co"># Load data from the ISD</span></span>
 <span id="cb4-2"><a href=""></a>data <span class="op">=</span> sspy.isd.load()</span>
 <span id="cb4-3"><a href=""></a></span>
@@ -628,8 +624,8 @@ E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 <span id="cb4-7"><a href=""></a><span class="co"># Calculate the ISO Coordinates</span></span>
 <span id="cb4-8"><a href=""></a>data <span class="op">=</span> sspy.surveys.add_iso_coords(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1c60f70c" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div id="d788445e" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -735,18 +731,18 @@ E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 </div>
 </div>
 <div class="fragment">
-<div id="3216acb0" class="cell" data-execution_count="8">
+<div id="153a2a15" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/cell-8-output-1.png" width="519" height="430"></p>
+<p><img data-src="presentation_files/figure-revealjs/cell-8-output-1.png" width="528" height="439"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div id="8eae69fe" class="cell" width="125%" data-execution_count="9">
+<div id="399f18d1" class="cell" width="125%" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -759,7 +755,7 @@ E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/cell-9-output-1.png" width="693" height="667"></p>
+<p><img data-src="presentation_files/figure-revealjs/cell-9-output-1.png" width="698" height="671"></p>
 </figure>
 </div>
 </div>
@@ -810,7 +806,7 @@ E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 </div><div class="column" style="width:50%;">
 <div class="r-stack">
 <div class="fragment fade-out">
-<div id="7353008b" class="cell" data-execution_count="10">
+<div id="d96422dc" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a>sspy.plotting.density_plot(</span>
 <span id="cb6-2"><a href=""></a>  sspy.isd.select_location_ids(data, <span class="st">"CamdenTown"</span>),</span>
 <span id="cb6-3"><a href=""></a>  title<span class="op">=</span><span class="st">"Camden Town Soundscape Distribution"</span>,</span>
@@ -827,7 +823,7 @@ E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 </div>
 </div>
 <div class="fragment fade-in-then-out">
-<div id="f32fb2db" class="cell" data-execution_count="11">
+<div id="ade56b48" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb7" data-code-line-numbers="2,7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a>sspy.plotting.density_plot(</span>
 <span id="cb7-2"><a href=""></a>  sspy.isd.select_location_ids(data, (<span class="st">"CamdenTown"</span>, <span class="st">"PancrasLock"</span>)),</span>
 <span id="cb7-3"><a href=""></a>  title <span class="op">=</span> <span class="st">"Comparison between two soundscapes"</span>,</span>
@@ -846,7 +842,7 @@ E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 </div>
 </div>
 <div class="fragment">
-<div id="24345993" class="cell" data-execution_count="12">
+<div id="6bb2e793" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|1,6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="im">from</span> soundscapy.plotting <span class="im">import</span> Backend</span>
 <span id="cb8-2"><a href=""></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
 <span id="cb8-3"><a href=""></a></span>
@@ -856,9 +852,9 @@ E_{ISO} = \frac{1}{\lambda_{Pl}} \sum_{i=1}^{8} \sin{\theta_i} \cdot \sigma_i
 <span id="cb8-7"><a href=""></a>  title <span class="op">=</span> <span class="st">"Regents Park Japanese Garden Soundscape"</span>,</span>
 <span id="cb8-8"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>                            <div id="3f4efde7-3f26-405f-85bb-e5947cd82fdf" class="plotly-graph-div" style="height:600px; width:600px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("3f4efde7-3f26-405f-85bb-e5947cd82fdf")) {                    Plotly.newPlot(                        "3f4efde7-3f26-405f-85bb-e5947cd82fdf",                        [{"hovertemplate":"ISOPleasant=%{x}\u003cbr\u003eISOEventful=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":[1.0,0.9267766952966369,0.13388347648318433,0.10355339059327368,0.24999999999999992,0.24999999999999992,0.9267766952966369,0.28033008588991065,0.04289321881345233,0.5303300858899105,0.9267766952966369,0.9267766952966369,0.9267766952966369,0.17677669529663675,0.7803300858899105,0.8964466094067263,0.6035533905932736,0.6035533905932737,0.8535533905932737,0.48743686707645795,0.6035533905932736,0.9267766952966369,0.5303300858899106,0.5606601717798212,0.5303300858899106,1.0,0.7071067811865475,0.8535533905932738,0.823223304703363,0.6338834764831843,0.3535533905932737,0.7071067811865474,0.6767766952966369,0.7071067811865475,-0.2928932188134526,0.7803300858899106,0.8535533905932737,0.7071067811865475,-0.0428932188134526,-0.03033008588991079,0.5303300858899106,0.8535533905932737,1.0,0.9267766952966369,0.7499999999999999,0.6338834764831843,0.8535533905932737,0.7071067811865475,0.6035533905932736,0.7071067811865474,0.8535533905932737,0.8535533905932737,0.6338834764831843,0.823223304703363,0.573223304703363,0.9267766952966369,0.9267766952966369,0.9267766952966369,0.7803300858899106,0.6338834764831843,-0.7803300858899109,0.6338834764831843,0.6338834764831843,0.7071067811865476,0.6035533905932737,0.8535533905932737,0.5606601717798211,0.7071067811865475,0.49999999999999983,0.6767766952966369,1.0,0.5303300858899106,0.8535533905932737,0.6767766952966368,0.9267766952966369,0.9267766952966369,0.6767766952966368,0.8535533905932737,0.45710678118654746,0.45710678118654746,0.5606601717798212,0.45710678118654746,0.7803300858899105,0.7803300858899107,0.9267766952966369,0.24999999999999992,0.7803300858899106,0.823223304703363,0.9267766952966369,1.0,1.0],"xaxis":"x","y":[0.3106601717798213,0.23743686707645814,0.13388347648318455,-9.197388681172371e-17,0.0,0.10355339059327377,-0.07322330470336316,0.6338834764831844,-0.1893398282201789,0.13388347648318427,0.030330085889910513,0.23743686707645814,-0.03033008588991079,-0.2196699141100894,-0.07322330470336316,0.20710678118654754,0.16421356237309498,0.10355339059327358,0.4142135623730951,-0.5125631329235418,-0.2071067811865477,0.030330085889910607,0.17677669529663675,-0.14644660940672632,-0.15900974233026818,0.4142135623730951,0.14644660940672613,0.06066017177982121,0.23743686707645814,0.030330085889910423,0.14644660940672624,0.20710678118654735,-0.01256313292354195,-0.14644660940672632,0.10355339059327368,0.2803300858899107,0.20710678118654754,-0.20710678118654754,-0.3106601717798213,0.07322330470336307,0.07322330470336307,-0.14644660940672632,0.3106601717798213,-0.2803300858899107,-0.14644660940672632,0.42677669529663687,-0.14644660940672632,-0.39644660940672644,-0.1464466094067264,0.060660171779821026,0.10355339059327358,-0.3106601717798213,-0.2196699141100895,0.17677669529663692,0.23743686707645814,-0.2803300858899107,-0.38388347648318444,-0.07322330470336316,-0.21966991411008943,0.09099025766973182,-0.6338834764831843,-0.36611652351681573,-0.5732233047033634,0.12132034355964261,-0.6035533905932738,-0.2500000000000001,-0.5000000000000002,0.060660171779821304,0.04289321881345246,0.030330085889910607,0.20710678118654743,-0.42677669529663703,0.20710678118654735,0.17677669529663684,-0.07322330470336316,0.13388347648318438,0.030330085889910607,0.20710678118654743,-0.04289321881345256,-9.197388681172371e-17,-0.14644660940672632,0.0,-0.5303300858899108,0.5303300858899106,0.13388347648318438,0.0,-0.2196699141100895,-0.07322330470336316,0.13388347648318438,0.4142135623730951,0.20710678118654743],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"ISOPleasant"},"range":[-1,1],"scaleanchor":"y","scaleratio":1},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"ISOEventful"},"range":[-1,1],"scaleanchor":"x","scaleratio":1},"legend":{"tracegroupgap":0},"title":{"text":"Regents Park Japanese Garden Soundscape"},"width":600,"height":600},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="fd5a4a0b-e2c0-4189-be42-f9de654b3009" class="plotly-graph-div" style="height:600px; width:600px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("fd5a4a0b-e2c0-4189-be42-f9de654b3009")) {                    Plotly.newPlot(                        "fd5a4a0b-e2c0-4189-be42-f9de654b3009",                        [{"hovertemplate":"ISOPleasant=%{x}\u003cbr\u003eISOEventful=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":[1.0,0.9267766952966369,0.13388347648318433,0.10355339059327368,0.24999999999999992,0.24999999999999992,0.9267766952966369,0.28033008588991065,0.04289321881345233,0.5303300858899105,0.9267766952966369,0.9267766952966369,0.9267766952966369,0.17677669529663675,0.7803300858899105,0.8964466094067263,0.6035533905932736,0.6035533905932737,0.8535533905932737,0.48743686707645795,0.6035533905932736,0.9267766952966369,0.5303300858899106,0.5606601717798212,0.5303300858899106,1.0,0.7071067811865475,0.8535533905932738,0.823223304703363,0.6338834764831843,0.3535533905932737,0.7071067811865474,0.6767766952966369,0.7071067811865475,-0.2928932188134526,0.7803300858899106,0.8535533905932737,0.7071067811865475,-0.0428932188134526,-0.03033008588991079,0.5303300858899106,0.8535533905932737,1.0,0.9267766952966369,0.7499999999999999,0.6338834764831843,0.8535533905932737,0.7071067811865475,0.6035533905932736,0.7071067811865474,0.8535533905932737,0.8535533905932737,0.6338834764831843,0.823223304703363,0.573223304703363,0.9267766952966369,0.9267766952966369,0.9267766952966369,0.7803300858899106,0.6338834764831843,-0.7803300858899109,0.6338834764831843,0.6338834764831843,0.7071067811865476,0.6035533905932737,0.8535533905932737,0.5606601717798211,0.7071067811865475,0.49999999999999983,0.6767766952966369,1.0,0.5303300858899106,0.8535533905932737,0.6767766952966368,0.9267766952966369,0.9267766952966369,0.6767766952966368,0.8535533905932737,0.45710678118654746,0.45710678118654746,0.5606601717798212,0.45710678118654746,0.7803300858899105,0.7803300858899107,0.9267766952966369,0.24999999999999992,0.7803300858899106,0.823223304703363,0.9267766952966369,1.0,1.0],"xaxis":"x","y":[0.3106601717798213,0.23743686707645814,0.13388347648318455,-9.197388681172371e-17,0.0,0.10355339059327377,-0.07322330470336316,0.6338834764831844,-0.1893398282201789,0.13388347648318427,0.030330085889910513,0.23743686707645814,-0.03033008588991079,-0.2196699141100894,-0.07322330470336316,0.20710678118654754,0.16421356237309498,0.10355339059327358,0.4142135623730951,-0.5125631329235418,-0.2071067811865477,0.030330085889910607,0.17677669529663675,-0.14644660940672632,-0.15900974233026818,0.4142135623730951,0.14644660940672613,0.06066017177982121,0.23743686707645814,0.030330085889910423,0.14644660940672624,0.20710678118654735,-0.01256313292354195,-0.14644660940672632,0.10355339059327368,0.2803300858899107,0.20710678118654754,-0.20710678118654754,-0.3106601717798213,0.07322330470336307,0.07322330470336307,-0.14644660940672632,0.3106601717798213,-0.2803300858899107,-0.14644660940672632,0.42677669529663687,-0.14644660940672632,-0.39644660940672644,-0.1464466094067264,0.060660171779821026,0.10355339059327358,-0.3106601717798213,-0.2196699141100895,0.17677669529663692,0.23743686707645814,-0.2803300858899107,-0.38388347648318444,-0.07322330470336316,-0.21966991411008943,0.09099025766973182,-0.6338834764831843,-0.36611652351681573,-0.5732233047033634,0.12132034355964261,-0.6035533905932738,-0.2500000000000001,-0.5000000000000002,0.060660171779821304,0.04289321881345246,0.030330085889910607,0.20710678118654743,-0.42677669529663703,0.20710678118654735,0.17677669529663684,-0.07322330470336316,0.13388347648318438,0.030330085889910607,0.20710678118654743,-0.04289321881345256,-9.197388681172371e-17,-0.14644660940672632,0.0,-0.5303300858899108,0.5303300858899106,0.13388347648318438,0.0,-0.2196699141100895,-0.07322330470336316,0.13388347648318438,0.4142135623730951,0.20710678118654743],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"ISOPleasant"},"range":[-1,1],"scaleanchor":"y","scaleratio":1},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"ISOEventful"},"range":[-1,1],"scaleanchor":"x","scaleratio":1},"legend":{"tracegroupgap":0},"title":{"text":"Regents Park Japanese Garden Soundscape"},"width":600,"height":600},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('3f4efde7-3f26-405f-85bb-e5947cd82fdf');
+var gd = document.getElementById('fd5a4a0b-e2c0-4189-be42-f9de654b3009');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -900,7 +896,7 @@ if (outputEl) {{
           display:block!important;
       }</style></aside>
 </section>
-<section id="databases-integration" class="slide level2">
+<section id="databases-integration" class="slide level2 scrollable">
 <h2>Databases Integration</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -940,7 +936,7 @@ if (outputEl) {{
 <pre><code>ISD shape: (3589, 142)
 SATP shape: (17441, 16)</code></pre>
 </div>
-<div id="database-load" class="cell-output cell-output-display" data-execution_count="29">
+<div id="database-load" class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1107,7 +1103,7 @@ SATP shape: (17441, 16)</code></pre>
 <span id="cb11-10"><a href=""></a>)</span>
 <span id="cb11-11"><a href=""></a></span>
 <span id="cb11-12"><a href=""></a>b.pyacoustics_metric(<span class="st">'LAeq'</span>, metric_settings<span class="op">=</span>laeq_settings).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="binaural-analysis" class="cell-output cell-output-display" data-execution_count="30">
+<div id="binaural-analysis" class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1168,9 +1164,9 @@ SATP shape: (17441, 16)</code></pre>
 <div class="fragment" style="font-size: 120%">
 <p><br>
 </p>
-<div id="90466d3d" class="cell" data-execution_count="15">
+<div id="330a6f73" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a>b.mosqito_metric(<span class="st">'sharpness_din_perseg'</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1279,9 +1275,9 @@ SATP shape: (17441, 16)</code></pre>
 <p><strong>Performance Example</strong>:</p>
 <ul>
 <li>20 recordings (10 min 41 sec total)</li>
-<li>Serial processing: 29.4 minutes</li>
-<li>Parallel processing: 7.7 minutes</li>
-<li>Speed-up factor: 3.8x</li>
+<li>Serial processing: ~60 minutes</li>
+<li>Parallel processing: 8.5 minutes</li>
+<li>Speed-up factor: 7x</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div id="audio-analysis" class="cell" data-execution_count="17">
@@ -1295,67 +1291,18 @@ SATP shape: (17441, 16)</code></pre>
 <span id="cb13-8"><a href=""></a><span class="co"># Analyse a folder of recordings</span></span>
 <span id="cb13-9"><a href=""></a>folder_results <span class="op">=</span> analysis.analyze_folder(</span>
 <span id="cb13-10"><a href=""></a>    wav_folder, </span>
-<span id="cb13-11"><a href=""></a>    calibration_file<span class="op">=</span><span class="st">"data/Levels.json"</span></span>
-<span id="cb13-12"><a href=""></a>)</span>
-<span id="cb13-13"><a href=""></a></span>
-<span id="cb13-14"><a href=""></a><span class="co"># Print results</span></span>
-<span id="cb13-15"><a href=""></a>folder_results.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-11"><a href=""></a>    calibration_file<span class="op">=</span><span class="st">"data/Levels.json"</span>,</span>
+<span id="cb13-12"><a href=""></a>    resample<span class="op">=</span><span class="dv">48000</span></span>
+<span id="cb13-13"><a href=""></a>)</span>
+<span id="cb13-14"><a href=""></a></span>
+<span id="cb13-15"><a href=""></a><span class="co"># Print results</span></span>
+<span id="cb13-16"><a href=""></a>folder_results.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="audio-analysis-1" class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"e95dca916b454854bd37c68b01d455ed","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"ef056b4b50534a9492426b72cb7d32d9","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.
-[Warning] Signal resampled to 48 kHz to allow calculation. To fulfill the standard requirements fs should be &gt;=48 kHz.</code></pre>
-</div>
-<div id="audio-analysis-2" class="cell-output cell-output-display" data-execution_count="33">
+<div id="audio-analysis-2" class="cell-output cell-output-display" data-execution_count="16">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1593,19 +1540,19 @@ SATP shape: (17441, 16)</code></pre>
 </div><div class="column" style="width:50%;">
 <div class="r-stack">
 <div class="fragment fade-out">
-<div id="43fb8987" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a><span class="co"># Customize analysis settings</span></span>
-<span id="cb15-2"><a href=""></a>new_config <span class="op">=</span> {</span>
-<span id="cb15-3"><a href=""></a>  <span class="st">"MoSQITo"</span>: {</span>
-<span id="cb15-4"><a href=""></a>    <span class="st">"loudness_zwtv"</span>: {</span>
-<span id="cb15-5"><a href=""></a>      <span class="st">"statistics"</span>: (<span class="st">"avg"</span>, <span class="dv">5</span>, <span class="dv">50</span>),</span>
-<span id="cb15-6"><a href=""></a>      <span class="st">"func_args"</span>: {<span class="st">"field_type"</span>: <span class="st">"diffuse"</span>}</span>
-<span id="cb15-7"><a href=""></a>    }</span>
-<span id="cb15-8"><a href=""></a>  }</span>
-<span id="cb15-9"><a href=""></a>}</span>
-<span id="cb15-10"><a href=""></a></span>
-<span id="cb15-11"><a href=""></a>analysis.update_config(new_config)</span>
-<span id="cb15-12"><a href=""></a>analysis.save_config(<span class="st">"updated_config.yaml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3c548093" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="co"># Customize analysis settings</span></span>
+<span id="cb14-2"><a href=""></a>new_config <span class="op">=</span> {</span>
+<span id="cb14-3"><a href=""></a>  <span class="st">"MoSQITo"</span>: {</span>
+<span id="cb14-4"><a href=""></a>    <span class="st">"loudness_zwtv"</span>: {</span>
+<span id="cb14-5"><a href=""></a>      <span class="st">"statistics"</span>: (<span class="st">"avg"</span>, <span class="dv">5</span>, <span class="dv">50</span>),</span>
+<span id="cb14-6"><a href=""></a>      <span class="st">"func_args"</span>: {<span class="st">"field_type"</span>: <span class="st">"diffuse"</span>}</span>
+<span id="cb14-7"><a href=""></a>    }</span>
+<span id="cb14-8"><a href=""></a>  }</span>
+<span id="cb14-9"><a href=""></a>}</span>
+<span id="cb14-10"><a href=""></a></span>
+<span id="cb14-11"><a href=""></a>analysis.update_config(new_config)</span>
+<span id="cb14-12"><a href=""></a>analysis.save_config(<span class="st">"updated_config.yaml"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -1654,6 +1601,14 @@ SATP shape: (17441, 16)</code></pre>
 </ul>
 </div><div class="column" style="width:60%;">
 <div class="r-stack">
+<div class="fragment fade-out">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/soundscapy-github.png" width="850"></p>
+<figcaption>Soundscapy Github Page</figcaption>
+</figure>
+</div>
+</div>
 <div class="fragment">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1686,7 +1641,7 @@ SATP shape: (17441, 16)</code></pre>
           display:block!important;
       }</style></aside>
 </section>
-<section id="future-work-predictive-models" class="slide level2">
+<section id="future-work-predictive-models" class="slide level2 scrollable">
 <h2>Future Work: Predictive Models<sup>1</sup></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1701,6 +1656,7 @@ SATP shape: (17441, 16)</code></pre>
 <li><strong>Pretrained Models Integration</strong>:
 <ul>
 <li>Predict soundscape perception from acoustic features</li>
+<li>Sound source recognition</li>
 <li>Multiple model support for comparison</li>
 </ul></li>
 </ul>
@@ -1728,7 +1684,7 @@ SATP shape: (17441, 16)</code></pre>
           display:block!important;
       }</style></aside>
 <aside><ol class="aside-footnotes"><li id="fn6"><p><span class="citation" data-cites="Hou2024Soundscape">Hou et al. (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span></p></li></ol></aside></section>
-<section id="future-work-soundscape-perception-indices-spi" class="slide level2">
+<section id="future-work-soundscape-perception-indices-spi" class="slide level2 scrollable">
 <h2>Future Work: Soundscape Perception Indices (SPI)<sup>1</sup></h2>
 <div class="columns">
 <div class="column" style="width:48%;">
@@ -2078,7 +2034,7 @@ Ooi, Kenneth, Zhen-Ting Ong, Karn N. Watcharasupat, Bhan Lam, Joo Young Hong, an
       });
     </script>
     <script type="application/vnd.jupyter.widget-state+json">
-    {"state":{"0499c29a0e0e4bb58a672600c59302d7":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"1ec6a7b8116d4b51b866b7d21a3270b3":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"21f1729b7b484e6d8d534d42df6c04e2":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_a778cd82a3fa47868e0aef860144dd5d","placeholder":"​","style":"IPY_MODEL_640788f56341451582e13c554c70873c","tabbable":null,"tooltip":null,"value":"Analyzing files: 100%"}},"39f8b81cf20c4bcb97435b94cd805790":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"4212dba032734944a7e0ce0b481a2279":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"5e9cceb1064f407ebda3985c15e53b8e":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_c3a6fdcebb914b1fbac0b0b23485c891","placeholder":"​","style":"IPY_MODEL_4212dba032734944a7e0ce0b481a2279","tabbable":null,"tooltip":null,"value":" 20/20 [08:14&lt;00:00,  9.52s/it]"}},"623c200cce774ec097873b06622803ae":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"ProgressView","bar_style":"success","description":"","description_allow_html":false,"layout":"IPY_MODEL_ec12f1fa888f4d1c9441e5c480ea3e0d","max":20,"min":0,"orientation":"horizontal","style":"IPY_MODEL_76a5b855b54d4be1a0feae53aac99ef9","tabbable":null,"tooltip":null,"value":20}},"640788f56341451582e13c554c70873c":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"76a5b855b54d4be1a0feae53aac99ef9":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"929ed1e367844f56a91c4e9729f3105c":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"a3877feeabed4c2083e6cafd009fe85c":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"a778cd82a3fa47868e0aef860144dd5d":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"acaee6a73ea54136bdb370caa21e2182":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_1ec6a7b8116d4b51b866b7d21a3270b3","placeholder":"​","style":"IPY_MODEL_929ed1e367844f56a91c4e9729f3105c","tabbable":null,"tooltip":null,"value":"Analyzing files: 100%"}},"c3a6fdcebb914b1fbac0b0b23485c891":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"d0cf6302db504dee91a301f0a81e512c":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"d1221a3f1df84bf69955967f89f08ed9":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_d0cf6302db504dee91a301f0a81e512c","placeholder":"​","style":"IPY_MODEL_dfb41f8945e04685a8386ae349696641","tabbable":null,"tooltip":null,"value":" 20/20 [08:17&lt;00:00, 10.33s/it]"}},"de57cd39967441f2a9db78a0fc48b682":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_acaee6a73ea54136bdb370caa21e2182","IPY_MODEL_623c200cce774ec097873b06622803ae","IPY_MODEL_5e9cceb1064f407ebda3985c15e53b8e"],"layout":"IPY_MODEL_0499c29a0e0e4bb58a672600c59302d7","tabbable":null,"tooltip":null}},"dfb41f8945e04685a8386ae349696641":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"e6065326f3924d77b76733a0d83f4419":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"e95dca916b454854bd37c68b01d455ed":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_21f1729b7b484e6d8d534d42df6c04e2","IPY_MODEL_efd7d3b9fe25427bbbda5e648f0517ce","IPY_MODEL_d1221a3f1df84bf69955967f89f08ed9"],"layout":"IPY_MODEL_a3877feeabed4c2083e6cafd009fe85c","tabbable":null,"tooltip":null}},"ec12f1fa888f4d1c9441e5c480ea3e0d":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"efd7d3b9fe25427bbbda5e648f0517ce":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"ProgressView","bar_style":"success","description":"","description_allow_html":false,"layout":"IPY_MODEL_39f8b81cf20c4bcb97435b94cd805790","max":20,"min":0,"orientation":"horizontal","style":"IPY_MODEL_e6065326f3924d77b76733a0d83f4419","tabbable":null,"tooltip":null,"value":20}}},"version_major":2,"version_minor":0}
+    {"state":{"33efee772d0c4f979a381ab46fed5d78":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"3705fa7752384d60bbceb0a6b8665c5a":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_63f41c26e17641679f8732fedbbc3099","placeholder":"​","style":"IPY_MODEL_c0b681fad8b84f9398eba17c3b742c8d","tabbable":null,"tooltip":null,"value":"Analyzing files: 100%"}},"399221a076654c89a583059b6f8b068b":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_6eb16828d7084d00acbbffaed5d33d1b","placeholder":"​","style":"IPY_MODEL_b56d5461622a4b71a2056ce7eaca057b","tabbable":null,"tooltip":null,"value":" 20/20 [11:19&lt;00:00, 13.17s/it]"}},"63f41c26e17641679f8732fedbbc3099":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"6eb16828d7084d00acbbffaed5d33d1b":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"9b338d224e2d48a68dd065939dc8fec6":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"ProgressView","bar_style":"success","description":"","description_allow_html":false,"layout":"IPY_MODEL_fb31738841e34cbea92c7b3ab4383292","max":20,"min":0,"orientation":"horizontal","style":"IPY_MODEL_deb5c21c3eef448693d34fcc3d4c96d7","tabbable":null,"tooltip":null,"value":20}},"b56d5461622a4b71a2056ce7eaca057b":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"c0b681fad8b84f9398eba17c3b742c8d":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"deb5c21c3eef448693d34fcc3d4c96d7":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"ef056b4b50534a9492426b72cb7d32d9":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_3705fa7752384d60bbceb0a6b8665c5a","IPY_MODEL_9b338d224e2d48a68dd065939dc8fec6","IPY_MODEL_399221a076654c89a583059b6f8b068b"],"layout":"IPY_MODEL_33efee772d0c4f979a381ab46fed5d78","tabbable":null,"tooltip":null}},"fb31738841e34cbea92c7b3ab4383292":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}},"version_major":2,"version_minor":0}
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {

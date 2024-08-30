@@ -701,7 +701,7 @@ Tested on a Macbook Pro M2 Max, processing 20 recordings \(total of 10 minutes, 
 In addition to continuing to improve the core functionality of Soundscapy, there are several areas where future development will be focused. As of v0.6, Soundscapy is primarily focused on implementing the analysis called for in ISO/TS 12913-3. Primarily, we aim to integrate new and existing predictive soundscape models, which will allow us to predict the soundscape quality of a location based on its acoustic characteristics #cite(<Mitchell2023conceptual>);. The goal is to develop Soundscapy into a robust modelling and prediction pipeline, which allows for the estimation of soundscape perception based on quantifiable or estimable factors \(see @fig-future).
 
 #figure([
-#box(width: 100%,image("Soundscapy2.png"))
+#box(width: 100%,image("images/Soundscapy2.png"))
 ], caption: figure.caption(
 position: bottom, 
 [

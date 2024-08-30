@@ -24,454 +24,177 @@
 #
 #
 #
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#| echo: false
+#| include: false
 import matplotlib.pyplot as plt
-import pandas as pd
 from pathlib import Path
-import warnings
-
-warnings.simplefilter("ignore")
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-import soundscapy as sspy
-```
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#| echo: false
-sample_transform = {
-    "RecordID": ["EX1", "EX2"],
-    "pleasant": [4, 2],
-    "vibrant": [4, 3],
-    "eventful": [4, 5],
-    "chaotic": [2, 5],
-    "annoying": [1, 5],
-    "monotonous": [3, 5],
-    "uneventful": [3, 3],
-    "calm": [4, 1],
-}
-sample_transform = pd.DataFrame().from_dict(sample_transform)
-sample_transform = sample_transform.set_index("RecordID")
-#
-#
-#
-#| label: likert-radar
-from soundscapy.plotting import likert
-likert.paq_radar_plot(sample_transform)
-```
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-# Load data from the ISD
-data = sspy.isd.load()
-
-# Apply built-in data quality checks
-data, excl_data = sspy.isd.validate(data, allow_paq_na=False)
-
-# Calculate the ISO Coordinates
-data = sspy.surveys.add_iso_coords(data)
-#
-#
-#
-#| echo: false
-view_data = sspy.surveys.return_paqs(data, incl_ids = False, other_cols = ['ISOPleasant', 'ISOEventful'])
-view_data.head(5)
-```
-#
-#
-#
-#
-#| echo: false
-likert.paq_radar_plot(sample_transform)
-```
-#
-#
-#
-#
-#
-#| code-fold: true
-#| width: 125%
-import seaborn as sns
-sample_transform = sspy.surveys.rename_paqs(sample_transform)
-sample_transform = sspy.surveys.add_iso_coords(sample_transform, overwrite=True)
-colors = ["b", "r"]
-palette = sns.color_palette(colors)
-sspy.plotting.scatter_plot(sample_transform, hue="RecordID", palette=palette, diagonal_lines=True, legend="brief", s=100, figsize=(8,8))
-
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-sspy.plotting.density_plot(
-  sspy.isd.select_location_ids(data, "CamdenTown"),
-  title="Camden Town Soundscape Distribution",
-  hue="LocationID",
-  incl_scatter=True
-)
-```
-#
-#
-#
-#
-#| code-line-numbers: '2,7'
-sspy.plotting.density_plot(
-  sspy.isd.select_location_ids(data, ("CamdenTown", "PancrasLock")),
-  title = "Comparison between two soundscapes",
-  hue = "LocationID",
-  incl_scatter=True,
-  incl_outline=True,
-  simple_density=True,
-)
-```
-#
-#
-#
-#
-#| code-line-numbers: "|1,6"
-from soundscapy.plotting import Backend
-import plotly.io as pio
-
-sspy.plotting.scatter_plot(
-  sspy.isd.select_location_ids(data, ("RegentsParkJapan")),
-  backend = Backend.PLOTLY,
-  title = "Regents Park Japanese Garden Soundscape",
-)
-```
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#| label: database-load
-# Load ISD data
-isd_data = sspy.isd.load()
-
-# Load SATP data
-import soundscapy.databases.satp as satp
-satp_data = satp.load_zenodo()
-
-print(f"ISD shape: {isd_data.shape}")
-print(f"SATP shape: {satp_data.shape}")
-
-sspy.isd.soundscapy_describe(isd_data).head(5)
-```
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#| label: binaural-analysis
-from soundscapy.audio.analysis_settings import MetricSettings
-from soundscapy.audio import Binaural
-
-b = Binaural.from_wav("data/CT101.wav")
-
-laeq_settings = MetricSettings(
-    run = True,
-    statistics = (5, 50, 'avg', 'max'),
-    label="LAeq",
-)
-
-b.pyacoustics_metric('LAeq', metric_settings=laeq_settings).round(2)
-```
-#
-#
-#
-#
-#
-#
-b.mosqito_metric('sharpness_din_perseg').round(2)
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#| echo: false
-__spec__ = None # Who fucking knows why: https://stackoverflow.com/questions/45720153/python-multiprocessing-error-attributeerror-module-main-has-no-attribute
-#
-#
-#
-#| eval: true
-#| label: audio-analysis
-#| code-line-numbers: "|1|5,6|8-12|14,15"
+import time
+import pandas as pd
 from soundscapy.audio import AudioAnalysis
+import warnings
+warnings.filterwarnings("ignore")
 
-wav_folder = Path("data")
+__spec__ = None # solves a bug with multiprocessing
 
-# Initialize AudioAnalysis with default settings
-analysis = AudioAnalysis()
-
-# Analyse a folder of recordings
-folder_results = analysis.analyze_folder(
-    wav_folder, 
-    calibration_file="data/Levels.json"
+wav_dir = Path("data")
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#| echo: true
+#| output: false
+import soundscapy as sspy
+df = sspy.isd.load()
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#| output: false
+df, excl_df = sspy.isd.validate(df)
+df = sspy.surveys.add_iso_coords(df)
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#| layout:
+#|   - 100
+# Setup side-by-side subplots
+fig, axes = plt.subplots(1, 2, figsize=(11, 5))
+# Plot the full soundscape distribution
+sspy.density_plot(
+  sspy.isd.select_location_ids(df, "CamdenTown"),
+  title= "Camden Town soundscape distribution",
+  hue="LocationID",
+  ax=axes[0],
 )
+# Plot the simplified soundscape distributions, using the hue variable
+sspy.density_plot(
+  sspy.isd.select_location_ids(df, ("CamdenTown", "PancrasLock")),
+  title="Comparison between two soundscapes",
+  figsize=(5, 5),
+  hue="LocationID",
+  simple_density=True,
+  ax=axes[1],
+)
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#| include: false
+#| output: false
+def set_size(w,h, ax=None):
+    """ w, h: width, height in inches """
+    if not ax: ax=plt.gca()
+    l = ax.figure.subplotpars.left
+    r = ax.figure.subplotpars.right
+    t = ax.figure.subplotpars.top
+    b = ax.figure.subplotpars.bottom
+    figw = float(w)/(r-l)
+    figh = float(h)/(t-b)
+    ax.figure.set_size_inches(figw, figh)
+#
+#
+#
+#| label: fig-binaural
+#| fig-cap: Loading and viewing a binaural recording in Soundscapy.
+from soundscapy import Binaural
 
-# Print results
-folder_results.head()
-```
+# Load the binaural recording from a local wav
+b = Binaural.from_wav(wav_dir.joinpath("CT101.wav"))
+# Plot the binaural recording
+ax = b.plot() 
+
+# Resizing for the paper
+ax.figure.set_size_inches(7, 3)
 #
 #
 #
@@ -487,9 +210,18 @@ folder_results.head()
 #
 #
 #
+#| output: false
+#| include: false
+b = Binaural(b.resample(48000), fs=48000)
 #
 #
 #
+#| label: tbl-psycho
+#| tbl-cap: Direct output of psychoacoustic metrics calculated by Soundscapy for a single binaural recording.
+metric = "loudness_zwtv"
+stats = (5, 50, 'avg', 'max')
+func_args = {'field_type': 'free'}
+b.mosqito_metric(metric, statistics=stats, func_args=func_args)
 #
 #
 #
@@ -499,16 +231,19 @@ folder_results.head()
 #
 #
 #
+analysis_settings = sspy.AnalysisSettings.default()
 #
 #
 #
 #
 #
+analysis_settings.get_metric_settings('MoSQITo', 'loudness_zwtv')
 #
 #
 #
 #
 #
+res_df = b.process_all_metrics(analysis_settings)
 #
 #
 #
@@ -518,177 +253,71 @@ folder_results.head()
 #
 #
 #
+#| include: false
+#| echo: false
+from soundscapy import AudioAnalysis
+from soundscapy.audio.parallel_processing import prep_multiindex_df, add_results
+import json
+levels = wav_dir.joinpath("Levels.json")
+with open(levels) as f:
+  levels = json.load(f)
+df = prep_multiindex_df(levels, incl_metric=False)
 #
 #
 #
+#| include: false
+#| output: false
+ser_start = time.perf_counter()
 #
 #
 #
+#| label: serial-process
+#| output: false
+for wav in wav_dir.glob("*.wav"):
+  recording = wav.stem
+  decibel = tuple(levels[recording].values())
+  b = Binaural.from_wav(wav, calibrate_to=decibel)
+  ser_df = add_results(
+    df, b.process_all_metrics(analysis_settings)
+    )
 #
 #
 #
+#| output: false
+#| include: false
+ser_end = time.perf_counter()
 #
 #
 #
+#| include: false
+#| output: false
+par_start = time.perf_counter()
 #
 #
 #
+#| output: false
+#| label: parallel-process
+#| fig-cap: Batch processing of 10 recordings using Soundscapy's parallel processing function.
+analysis = AudioAnalysis()
+par_df = analysis.analyze_folder(wav_dir, calibration_file=wav_dir.joinpath('levels.json'), resample=48000)
 #
 #
 #
+#| output: false
+#| include: false
+par_end = time.perf_counter()
 #
 #
 #
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
+#| echo: false
+#| output: asis
+# print(f"Time taken for serial processing: {(ser_end - ser_start)/60:.2f} min")
+# print(f"Time taken for parallel processing: {(par_end - par_start)/60:.2f} min")
+# print(f"Speedup: {(ser_end - ser_start)/(par_end - par_start):.2f} times.")
+from IPython.display import Markdown
+ser_time = (ser_end - ser_start)
+par_time = (par_end - par_start)
+Markdown(f"Tested on a Macbook Pro M2 Max, processing 20 recordings (total of 10 minutes, 41 seconds of audio) in series took {ser_time/60:.1f} minutes, while processing the same 20 recordings in parallel took {par_time/60:.1f} minutes, a speed up of {ser_time / par_time:.1f} times.")
 #
 #
 #
